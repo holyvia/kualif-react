@@ -6,8 +6,7 @@ import { COUNTRIES } from "../lib/Country";
 import { useNavigate } from "react-router-dom";
 import { THEME, ThemeContext, useTheme } from "../lib/Theme";
 
-
-export default function ListPage(){
+export default function FavoritePage(){
     const [substring, setSubstring] = useState('')
     const [countryList, setCountryList] = useState([])
     const {loading, error, data} = useQuery(COUNTRIES)
@@ -72,9 +71,9 @@ export default function ListPage(){
                     gap:"1rem",
                     width:"100%",
                     backgroundColor:curTheme.background,
-                    color:curTheme.fontColor
+                    color:curTheme.fontColor,
                 }}>
-                    {countryList.filter(dat => dat.name.toLowerCase().includes(substring.toLowerCase())).map((d)=>{
+                    {data.countries.filter(dat => dat.name.toLowerCase().includes(substring.toLowerCase())).filter(da=>favorites.includes(da.code)).map((d)=>{
                         return(
                             <Card>
                                 <CardDetail>
@@ -98,5 +97,4 @@ export default function ListPage(){
             </Navbar>
         )
     }
-
 }

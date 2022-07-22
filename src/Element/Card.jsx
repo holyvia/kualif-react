@@ -22,11 +22,16 @@ export default function Card({children,...attr}) {
 }
 
 export function Button({children}){
-  return <div className="bg-slate-200"
+  const{curTheme, setCurTheme} = useTheme()
+  
+  return <div
   style={{
-    marginLeft:"8rem",
-    width:"1.6rem",
-    borderRadius:"5px"
+    marginLeft:"5.2rem",
+    width:"auto",
+    paddingLeft:"0.4rem",
+    paddingRight:"0.4rem",
+    borderRadius:"5px",
+    backgroundColor:curTheme.background
   }}>
     {children}
   </div>

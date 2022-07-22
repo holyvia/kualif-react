@@ -1,24 +1,22 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import {
-  BellIcon,
-  CalendarIcon,
-  ChartBarIcon,
-  FolderIcon,
   HomeIcon,
-  InboxIcon,
   MenuAlt2Icon,
   UsersIcon,
+  StarIcon,
   XIcon,
 } from '@heroicons/react/outline'
 import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
 import { SearchIcon } from '@heroicons/react/solid'
 import ListPage from '../pages/ListPage';
 import { Link } from 'react-router-dom';
+import { useTheme } from '../lib/Theme';
 
 const navigation = [
-  { name: 'Home', href: '/', icon: HomeIcon, current: true ,buttonIdx:1 },
+  { name: 'Home', href: '/', icon: HomeIcon, current: false ,buttonIdx:1 },
   { name: 'Personalize', href: '/changeTheme', icon: UsersIcon, current: false, buttonIdx:2 },
+  { name: 'Favorites', href: '/favoritePage', icon: StarIcon, current: false, buttonIdx:2 },
 ]
 
 function classNames(...classes) {
@@ -29,6 +27,7 @@ function classNames(...classes) {
 export default function Navbar({children, setSubstring}) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [tab, setTab] = useState(1)
+  const {favorites, setFavorites} = useTheme()
   const client = new ApolloClient({
     uri: 'https://countries.trevorblades.com/',
     cache: new InMemoryCache(),
@@ -97,7 +96,8 @@ export default function Navbar({children, setSubstring}) {
                     <Link
                       key={item.name}
                       to={item.href}
-                      onClick={()=>setSidebarOpen(false)}
+                      onClick={()=>{
+                        setSidebarOpen(false)}}
                       className={classNames(
                         item.current
                           ? 'bg-gray-100 text-gray-900'

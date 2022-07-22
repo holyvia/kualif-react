@@ -56,8 +56,8 @@ export default function ChangeTheme(){
                         </div>
                     </Label>
                     <Value>
-                        <select id="theme" name="label" value={curTheme} onChange={(e)=>handleChange(e)}>
-                            <option>none</option>
+                        <select id="theme" name="label" value={curTheme.id} onChange={(e)=>handleChange(e)}>
+                            <option>select theme</option>
                             {themeList.map((theme) => (
                             <option key={theme.id} value={theme.id}>{theme.name}</option>
                             ))}
