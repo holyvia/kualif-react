@@ -84,11 +84,7 @@ export default function Navbar({children, setSubstring}) {
                 </div>
               </Transition.Child>
               <div className="flex-shrink-0 px-4 flex items-center">
-                <img
-                  className="h-8 w-auto"
-                  src="/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
-                  alt="Workflow"
-                />
+                <p>CountryList</p>
               </div>
               <div className="mt-5 flex-1 h-0 overflow-y-auto">
                 <nav className="px-2 space-y-1">
@@ -129,10 +125,7 @@ export default function Navbar({children, setSubstring}) {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="border-r border-gray-200 pt-5 pb-4 flex flex-col flex-grow overflow-y-auto">
             <div className="flex-shrink-0 px-4 flex items-center">
-              <img
-                className="h-8 w-auto"
-                alt="Workflow"
-              />
+              <p>CountryList</p>
             </div>
             <div className="flex-grow mt-5 flex flex-col">
               <nav className="flex-1 bg-white px-2 space-y-1">
