@@ -40,7 +40,7 @@ export default function ChangeTheme(){
     }
     console.log(curTheme);
     return(
-        <Navbar>
+        <Navbar searchBar={false}>
             <div style={{
                 display:"grid",
                 gap:"1rem",

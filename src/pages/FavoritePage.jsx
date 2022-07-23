@@ -64,7 +64,7 @@ export default function FavoritePage(){
     // console.log(theme);
     if(!loading){
         return(
-            <Navbar setSubstring={setSubstring}>
+            <Navbar setSubstring={setSubstring} searchBar={true}>
                 <div style={{
                     display:"grid",
                     gridTemplateColumns:"repeat(2,minmax(0,1fr))",

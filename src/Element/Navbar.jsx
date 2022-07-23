@@ -24,7 +24,7 @@ function classNames(...classes) {
 }
 
 
-export default function Navbar({children, setSubstring}) {
+export default function Navbar({children, setSubstring, searchBar}) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [tab, setTab] = useState(1)
   const {favorites, setFavorites} = useTheme()
@@ -170,17 +170,19 @@ export default function Navbar({children, setSubstring}) {
                   Search
                 </label>
                 <div className="relative w-full text-gray-400 focus-within:text-gray-600">
-                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center">
+                  {searchBar==true?<div className="pointer-events-none absolute inset-y-0 left-0 flex items-center">
                     <SearchIcon className="h-5 w-5" aria-hidden="true" />
-                  </div>
-                  <input
+                  </div>:<div/>}
+                  
+                  {searchBar==true?<input
                     onChange={(e)=>setSubstring(e.target.value)}
                     id="search_field"
                     className="block h-full w-full border-transparent py-2 pl-8 pr-3 text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-0 focus:border-transparent sm:text-sm"
                     placeholder="Search"
                     type="search"
                     name="search"
-                  />
+                  />:<div/>}
+                  
                 </div>
               </form>
             </div>

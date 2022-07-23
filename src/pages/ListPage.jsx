@@ -5,7 +5,7 @@ import Navbar from "../Element/Navbar";
 import { COUNTRIES } from "../lib/Country";
 import { useNavigate } from "react-router-dom";
 import { THEME, ThemeContext, useTheme } from "../lib/Theme";
-
+import {Loader} from "react-js-loader"
 
 export default function ListPage(){
     const [substring, setSubstring] = useState('')
@@ -65,7 +65,7 @@ export default function ListPage(){
     // console.log(theme);
     if(!loading){
         return(
-            <Navbar setSubstring={setSubstring}>
+            <Navbar setSubstring={setSubstring} searchBar={true}>
                 <div style={{
                     display:"grid",
                     gridTemplateColumns:"repeat(2,minmax(0,1fr))",
@@ -98,5 +98,7 @@ export default function ListPage(){
             </Navbar>
         )
     }
+
+
 
 }

@@ -6,7 +6,7 @@ import Navbar from "../Element/Navbar";
 import { COUNTRIES, COUNTRY } from "../lib/Country";
 import {useParams} from "react-router-dom"
 import { THEME, ThemeContext, useTheme } from "../lib/Theme";
-
+import axios from "axios";
 
 export default function DetailPage(){
     const [countryList, setCountry] = useState([])
@@ -18,15 +18,17 @@ export default function DetailPage(){
     })
     const {curTheme, setCurTheme} =useTheme()
     useEffect(()=>{
-        const theme =JSON.parse(localStorage.getItem('theme'))
-        if(theme){
-            setCurTheme(theme)
-        }
+        if(!loading){
+            const theme =JSON.parse(localStorage.getItem('theme'))
+            if(theme){
+                setCurTheme(theme)
+            }
+        }  
     },[])
     if(!loading){
         console.log(data);
         return(
-            <Navbar>
+            <Navbar searchBar={false}>
                 <div style={{
                     // display:"grid",
                     margin:0,
@@ -37,6 +39,7 @@ export default function DetailPage(){
                     backgroundColor:curTheme.secColor,
                     color:curTheme.fontColor
                 }}>
+                    
                     <Content>
                         <Label>
                             Country Name
@@ -49,6 +52,7 @@ export default function DetailPage(){
                         <Label>
                             Capital
                         </Label>
+                       
                         <Value>
                             {data.country.capital}
                         </Value>
@@ -91,6 +95,11 @@ export default function DetailPage(){
                             ))}
                             
                         </Value>
+                    </Content>
+                    <Content>
+                        <Label>Image</Label>
+                        <img src="https://picsum.photos/id/10/200/100" alt="" />
+                        
                     </Content>
                 </div>
             </Navbar>
