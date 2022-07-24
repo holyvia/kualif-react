@@ -97,4 +97,9 @@ export default function FavoritePage(){
             </Navbar>
         )
     }
+    else{
+        return(
+            <p>Loading..</p>
+        )
+    }
 }

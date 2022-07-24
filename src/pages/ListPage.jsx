@@ -98,7 +98,11 @@ export default function ListPage(){
             </Navbar>
         )
     }
-
+    else{
+        return(
+            <p>Loading..</p>
+        )
+    }
 
 
 }
